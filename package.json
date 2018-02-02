@@ -19,7 +19,7 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "lodash.pick": "^4.2.1",
-    "photoswipe": "^4.1.0",
+    "photoswipe": "git+https://github.com/markusleadsuite/PhotoSwipe.git",
     "prop-types": "^15.5.10"
   },
   "devDependencies": {
