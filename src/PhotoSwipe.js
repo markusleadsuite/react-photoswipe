@@ -13,8 +13,7 @@ class PhotoSwipe extends React.Component {
     onClose: PropTypes.func,
     id: PropTypes.string,
     className: PropTypes.string,
-    downloadButton: PropTypes.element,
-    downloadButtonFunction: PropTypes.func
+    downloadButton: PropTypes.element
   };
 
   static defaultProps = {
@@ -23,10 +22,7 @@ class PhotoSwipe extends React.Component {
     },
     id: '',
     className: '',
-    downloadButton: null,
-    downloadButtonFunction: () => {
-      console.log('Not Impletemented');
-    }
+    downloadButton: <button>Not Impletemented</button>
   };
 
   state = {
@@ -111,7 +107,7 @@ class PhotoSwipe extends React.Component {
   };
 
   render() {
-    const { id, downloadButton, downloadButtonFunction } = this.props;
+    const { id, downloadButton } = this.props;
     let { className } = this.props;
     className = classnames(['pswp', className]).trim();
     return (
@@ -138,11 +134,6 @@ class PhotoSwipe extends React.Component {
               <button
                 className="pswp__button pswp__button--close"
                 title="Close (Esc)"
-              />
-              <button
-                className="pswp__button pswp__button--download"
-                title="Download"
-                onClick={downloadButtonFunction}
               />
               {downloadButton}
               <button
