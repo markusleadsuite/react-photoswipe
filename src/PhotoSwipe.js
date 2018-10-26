@@ -22,7 +22,7 @@ class PhotoSwipe extends React.Component {
     },
     id: '',
     className: '',
-    downloadButton: <button>Not Impletemented</button>
+    downloadButton: null
   };
 
   state = {
