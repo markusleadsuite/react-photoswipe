@@ -135,11 +135,11 @@ class PhotoSwipe extends React.Component {
                 className="pswp__button pswp__button--close"
                 title="Close (Esc)"
               />
-              {downloadButton}
               <button
                 className="pswp__button pswp__button--share"
                 title="Share"
               />
+              {downloadButton}
               <button
                 className="pswp__button pswp__button--fs"
                 title="Toggle fullscreen"
