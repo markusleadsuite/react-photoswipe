@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Photoswipe from 'photoswipe';
-import PhotoswipeUIDefault from 'photoswipe/dist/photoswipe-ui-default';
-import classnames from 'classnames';
-import events from './events';
+import React from "react";
+import PropTypes from "prop-types";
+import Photoswipe from "photoswipe";
+import PhotoswipeUIDefault from "photoswipe/dist/photoswipe-ui-default";
+import classnames from "classnames";
+import events from "./events";
 
 class PhotoSwipe extends React.Component {
   static propTypes = {
@@ -17,10 +17,9 @@ class PhotoSwipe extends React.Component {
 
   static defaultProps = {
     options: {},
-    onClose: () => {
-    },
-    id: '',
-    className: ''
+    onClose: () => {},
+    id: "",
+    className: ""
   };
 
   state = {
@@ -34,7 +33,7 @@ class PhotoSwipe extends React.Component {
     }
   };
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = nextProps => {
     const { isOpen } = this.state;
     if (nextProps.isOpen) {
       if (!isOpen) {
@@ -51,35 +50,43 @@ class PhotoSwipe extends React.Component {
     this.closePhotoSwipe();
   };
 
-  openPhotoSwipe = (props) => {
+  openPhotoSwipe = props => {
     const { items, options } = props;
     const pswpElement = this.pswpElement;
-    this.photoSwipe = new Photoswipe(pswpElement, PhotoswipeUIDefault, items, options);
-    events.forEach((event) => {
+    this.photoSwipe = new Photoswipe(
+      pswpElement,
+      PhotoswipeUIDefault,
+      items,
+      options
+    );
+    events.forEach(event => {
       const callback = props[event];
-      if (callback || event === 'destroy') {
+      if (callback || event === "destroy") {
         const self = this;
-        this.photoSwipe.listen(event, function (...args) {
+        this.photoSwipe.listen(event, function(...args) {
           if (callback) {
             args.unshift(this);
             callback(...args);
           }
-          if (event === 'destroy') {
+          if (event === "destroy") {
             self.handleClose();
           }
         });
       }
     });
-    this.setState({
-      isOpen: true
-    }, () => {
-      this.photoSwipe.init();
-    });
+    this.setState(
+      {
+        isOpen: true
+      },
+      () => {
+        this.photoSwipe.init();
+      }
+    );
   };
 
   updateItems = (items = []) => {
     this.photoSwipe.items.length = 0;
-    items.forEach((item) => {
+    items.forEach(item => {
       this.photoSwipe.items.push(item);
     });
     this.photoSwipe.invalidateCurrItems();
@@ -95,19 +102,22 @@ class PhotoSwipe extends React.Component {
 
   handleClose = () => {
     const { onClose } = this.props;
-    this.setState({
-      isOpen: false
-    }, () => {
-      if (onClose) {
-        onClose();
+    this.setState(
+      {
+        isOpen: false
+      },
+      () => {
+        if (onClose) {
+          onClose();
+        }
       }
-    });
+    );
   };
 
   render() {
-    const { id } = this.props;
+    const { id, downloadButton } = this.props;
     let { className } = this.props;
-    className = classnames(['pswp', className]).trim();
+    className = classnames(["pswp", className]).trim();
     return (
       <div
         id={id}
@@ -115,24 +125,25 @@ class PhotoSwipe extends React.Component {
         tabIndex="-1"
         role="dialog"
         aria-hidden="true"
-        ref={(node) => {
+        ref={node => {
           this.pswpElement = node;
         }}
       >
-        <div className="pswp__bg"/>
+        <div className="pswp__bg" />
         <div className="pswp__scroll-wrap">
           <div className="pswp__container">
-            <div className="pswp__item"/>
-            <div className="pswp__item"/>
-            <div className="pswp__item"/>
+            <div className="pswp__item" />
+            <div className="pswp__item" />
+            <div className="pswp__item" />
           </div>
           <div className="pswp__ui pswp__ui--hidden">
             <div className="pswp__top-bar">
-              <div className="pswp__counter"/>
+              <div className="pswp__counter" />
               <button
                 className="pswp__button pswp__button--close"
                 title="Close (Esc)"
               />
+              {downloadButton}
               <button
                 className="pswp__button pswp__button--share"
                 title="Share"
@@ -141,17 +152,20 @@ class PhotoSwipe extends React.Component {
                 className="pswp__button pswp__button--fs"
                 title="Toggle fullscreen"
               />
-              <button className="pswp__button pswp__button--zoom" title="Zoom in/out"/>
+              <button
+                className="pswp__button pswp__button--zoom"
+                title="Zoom in/out"
+              />
               <div className="pswp__preloader">
                 <div className="pswp__preloader__icn">
                   <div className="pswp__preloader__cut">
-                    <div className="pswp__preloader__donut"/>
+                    <div className="pswp__preloader__donut" />
                   </div>
                 </div>
               </div>
             </div>
             <div className="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-              <div className="pswp__share-tooltip"/>
+              <div className="pswp__share-tooltip" />
             </div>
             <button
               className="pswp__button pswp__button--arrow--left"
@@ -162,7 +176,7 @@ class PhotoSwipe extends React.Component {
               title="Next (arrow right)"
             />
             <div className="pswp__caption">
-              <div className="pswp__caption__center"/>
+              <div className="pswp__caption__center" />
             </div>
           </div>
         </div>
