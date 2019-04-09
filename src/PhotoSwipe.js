@@ -13,7 +13,8 @@ class PhotoSwipe extends React.Component {
     onClose: PropTypes.func,
     id: PropTypes.string,
     className: PropTypes.string,
-    downloadButton: PropTypes.element
+    downloadButton: PropTypes.element,
+    shopButton: PropTypes.element
   };
 
   static defaultProps = {
@@ -21,7 +22,8 @@ class PhotoSwipe extends React.Component {
     onClose: () => {},
     id: "",
     className: "",
-    downloadButton: null
+    downloadButton: null,
+    shopButton: null
   };
 
   state = {
