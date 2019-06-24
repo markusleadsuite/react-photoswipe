@@ -15,6 +15,7 @@ class PhotoSwipe extends React.Component {
     className: PropTypes.string,
     downloadButton: PropTypes.element,
     shopButton: PropTypes.element,
+    customButtons: PropTypes.element
   };
 
   static defaultProps = {
@@ -25,6 +26,7 @@ class PhotoSwipe extends React.Component {
     className: '',
     downloadButton: null,
     shopButton: null,
+    customButtons: null
   };
 
   state = {
@@ -109,7 +111,7 @@ class PhotoSwipe extends React.Component {
   };
 
   render() {
-    const { id, downloadButton, shopButton } = this.props;
+    const { id, downloadButton, shopButton, customButtons } = this.props;
     let { className } = this.props;
     className = classnames(['pswp', className]).trim();
     return (
@@ -143,6 +145,7 @@ class PhotoSwipe extends React.Component {
               />
               {downloadButton}
               {shopButton}
+              {customButtons}
               <button
                 className="pswp__button pswp__button--fs"
                 title="Toggle fullscreen"
