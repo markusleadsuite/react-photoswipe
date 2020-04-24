@@ -80,6 +80,9 @@ class PhotoSwipe extends React.Component {
       isOpen: true
     }, () => {
       this.photoSwipe.init();
+      if (options.photoswipeInstance) {
+        options.photoswipeInstance(this.photoSwipe);
+      }
     });
   };
 
