@@ -103,16 +103,20 @@ class PhotoSwipe extends React.Component {
   };
 
   closePhotoSwipe = () => {
+    if (document.body.className.indexOf('pswp-open') >= 0) {
+      document.body.className = document.body.className.replace(' pswp-open', '').replace('pswp-open', '');
+    }
     if (!this.photoSwipe) {
-      if (document.body.className.indexOf('pswp-open') >= 0) {
-        document.body.className = document.body.className.replace(' pswp-open', '').replace('pswp-open', '');
-      }
       return;
     }
     this.photoSwipe.close();
   };
 
   handleClose = () => {
+    if (document.body.className.indexOf('pswp-open') >= 0) {
+      document.body.className = document.body.className.replace(' pswp-open', '').replace('pswp-open', '');
+    }
+
     const { onClose } = this.props;
     this.setState({
       isOpen: false
