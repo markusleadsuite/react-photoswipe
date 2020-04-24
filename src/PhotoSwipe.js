@@ -80,6 +80,11 @@ class PhotoSwipe extends React.Component {
       isOpen: true
     }, () => {
       this.photoSwipe.init();
+
+      if (document.body.className.indexOf('pswp-open') === -1) {
+        document.body.className += ' pswp-open';
+      }
+
       if (options.photoswipeInstance) {
         options.photoswipeInstance(this.photoSwipe);
       }
@@ -99,6 +104,9 @@ class PhotoSwipe extends React.Component {
 
   closePhotoSwipe = () => {
     if (!this.photoSwipe) {
+      if (document.body.className.indexOf('pswp-open') >= 0) {
+        document.body.className = document.body.className.replace(' pswp-open', '').replace('pswp-open', '');
+      }
       return;
     }
     this.photoSwipe.close();
