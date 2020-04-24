@@ -87,12 +87,14 @@ class PhotoSwipe extends React.Component {
   };
 
   updateItems = (items = []) => {
-    this.photoSwipe.items.length = 0;
-    items.forEach((item) => {
-      this.photoSwipe.items.push(item);
-    });
-    this.photoSwipe.invalidateCurrItems();
-    this.photoSwipe.updateSize(true);
+    if (items.length !== this.photoSwipe.items.length) {
+      this.photoSwipe.items.length = 0;
+      items.forEach((item) => {
+        this.photoSwipe.items.push(item);
+      });
+      this.photoSwipe.invalidateCurrItems();
+      this.photoSwipe.updateSize(true);
+    }
   };
 
   closePhotoSwipe = () => {
