@@ -96,7 +96,7 @@ class PhotoSwipe extends React.Component {
   };
 
   updateItems = (items = []) => {
-    if (items.length !== this.photoSwipe.items.length) {
+    if (this.photoSwipe && this.photoSwipe.items && items.length !== this.photoSwipe.items.length) {
       this.photoSwipe.items.length = 0;
       items.forEach((item) => {
         this.photoSwipe.items.push(item);
