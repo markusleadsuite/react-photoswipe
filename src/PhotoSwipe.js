@@ -48,6 +48,10 @@ class PhotoSwipe extends React.Component {
       } else {
         this.updateItems(nextProps.items);
       }
+
+      if (document.body.className.indexOf('pswp-open') === -1) {
+        document.body.className += ' pswp-open';
+      }
     } else if (isOpen) {
       this.closePhotoSwipe();
     }
