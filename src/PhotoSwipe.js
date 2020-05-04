@@ -97,10 +97,7 @@ class PhotoSwipe extends React.Component {
 
   updateItems = (items = []) => {
     if (this.photoSwipe && this.photoSwipe.items && items.length !== this.photoSwipe.items.length) {
-
       const currentIndex = this.photoswipe.getCurrentIndex();
-
-
 
       this.photoSwipe.items.length = 0;
       items.forEach((item) => {
@@ -109,11 +106,9 @@ class PhotoSwipe extends React.Component {
       this.photoSwipe.invalidateCurrItems();
       this.photoSwipe.updateSize(true);
 
-      if(currentIndex >= 0 && currentIndex >= items.length) {
-              this.photoSwipe.goTo(currentIndex - 1);
+      if (currentIndex >= 0 && currentIndex >= items.length) {
+        this.photoSwipe.goTo(currentIndex - 1);
       }
-
-
     }
   };
 
