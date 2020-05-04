@@ -99,7 +99,7 @@ class PhotoSwipe extends React.Component {
     if (this.photoSwipe && this.photoSwipe.items && items.length !== this.photoSwipe.items.length) {
       const currentIndex = this.photoSwipe.getCurrentIndex();
 
-      if (currentIndex >= 0 && currentIndex >= items.length) {
+      if (currentIndex > 0 && currentIndex >= items.length) {
         this.photoSwipe.goTo(currentIndex - 1);
       }
 
